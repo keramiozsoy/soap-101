@@ -7,4 +7,6 @@
 # Resource
 
 - www.soapui.org/resources/tutorials/soap-sample-project
-- www.tutorialspoint.com/springws/springws_first_application.htm
+
+- DYNAMIC WSDL www.tutorialspoint.com/springws/springws_first_application.htm
+- STATIC WSDL www.tutorialspoint.com/springws/springws_static_wsdl.htm
