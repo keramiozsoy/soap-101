@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
 	<modules>
-		<module>country</module>
 		<module>country-repo-jdk-eleven</module>
 		<module>country-repo-jdk-eight</module>
+		<module>country</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
