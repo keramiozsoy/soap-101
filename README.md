@@ -3,6 +3,11 @@
 
 # Project
 
+I used to country wsdl
+
+- http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+
 
 # Resource
 
