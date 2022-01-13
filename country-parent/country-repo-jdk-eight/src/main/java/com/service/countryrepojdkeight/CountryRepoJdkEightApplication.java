@@ -1,13 +1,13 @@
-package com.service.countryrepojdkeleven;
+package com.service.countryrepojdkeight;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CountryRepoJdkElevenApplication {
+public class CountryRepoJdkEightApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CountryRepoJdkElevenApplication.class, args);
+		SpringApplication.run(CountryRepoJdkEightApplication.class, args);
 	}
 
 }
