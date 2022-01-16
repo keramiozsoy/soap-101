@@ -23,6 +23,18 @@ public class WSCallRunner implements CommandLineRunner {
 
         CountryInfoServiceSoapType port = service.getPort(CountryInfoServiceSoapType.class);
 
+
+        final ArrayOftCountryInfo arrayOftCountryInfo = port.fullCountryInfoAllCountries();
+
+        arrayOftCountryInfo.getTCountryInfo().stream()
+                .map(TCountryInfo::getSName)
+                .collect(Collectors.toUnmodifiableList())
+                .forEach(System.out::println);
+
+
+        System.out.println("==1==");
+
+
         final ArrayOftContinent listOfContinentsByCode = port.listOfContinentsByCode();
 
         listOfContinentsByCode.getTContinent().stream()
@@ -36,7 +48,7 @@ public class WSCallRunner implements CommandLineRunner {
                 .forEach(System.out::println);
 
 
-        // ---
+        System.out.println("==2==");
 
         final ArrayOftContinent listOfContinentsByName = port.listOfContinentsByName();
 
@@ -51,7 +63,7 @@ public class WSCallRunner implements CommandLineRunner {
                 .forEach(System.out::println);
 
 
-        // ---
+        System.out.println("==3==");
 
         final ArrayOftCountryCodeAndName listOfCountryNamesByCode = port.listOfCountryNamesByCode();
 
@@ -65,7 +77,9 @@ public class WSCallRunner implements CommandLineRunner {
                 .collect(Collectors.toUnmodifiableList())
                 .forEach(System.out::println);
 
-        // ---
+
+        System.out.println("==4==");
+
         final ArrayOftCountryCodeAndName listOfCountryNamesByName = port.listOfCountryNamesByName();
 
         listOfCountryNamesByName.getTCountryCodeAndName().stream()
@@ -92,21 +106,21 @@ public class WSCallRunner implements CommandLineRunner {
                 .collect(Collectors.toUnmodifiableList())
                 .forEach(System.out::println);
 
-        // ---
+        System.out.println("==5==");
 
         final ArrayOftCurrency listOfCurrenciesByCode = port.listOfCurrenciesByCode();
 
-        listOfContinentsByCode.getTContinent().stream()
-                .map(TContinent::getSCode)
+        listOfCurrenciesByCode.getTCurrency().stream()
+                .map(TCurrency::getSISOCode)
                 .collect(Collectors.toUnmodifiableList())
                 .forEach(System.out::println);
 
-        listOfContinentsByCode.getTContinent().stream()
-                .map(TContinent::getSName)
+        listOfCurrenciesByCode.getTCurrency().stream()
+                .map(TCurrency::getSName)
                 .collect(Collectors.toUnmodifiableList())
                 .forEach(System.out::println);
 
-        // ---
+        System.out.println("==6==");
 
         final ArrayOftCurrency listOfCurrenciesByName = port.listOfCurrenciesByName();
 
@@ -120,7 +134,7 @@ public class WSCallRunner implements CommandLineRunner {
                 .collect(Collectors.toUnmodifiableList())
                 .forEach(System.out::println);
 
-        // ---
+        System.out.println("==7==");
 
         final ArrayOftLanguage listOfLanguagesByCode = port.listOfLanguagesByCode();
 
@@ -135,7 +149,7 @@ public class WSCallRunner implements CommandLineRunner {
                 .forEach(System.out::println);
 
 
-        // ---
+        System.out.println("==7==");
 
         final ArrayOftLanguage listOfLanguagesByName = port.listOfLanguagesByName();
 
@@ -149,7 +163,7 @@ public class WSCallRunner implements CommandLineRunner {
                 .collect(Collectors.toUnmodifiableList())
                 .forEach(System.out::println);
 
-        // ---
+        System.out.println("==8==");
 
 
         final TCountryInfo tCountryInfo = port.fullCountryInfo(
@@ -160,15 +174,38 @@ public class WSCallRunner implements CommandLineRunner {
         System.out.println(tCountryInfo.getSCountryFlag());
 
 
-        // ---
+        System.out.println("==9==");
 
-        System.out.println(
-                port.countryFlag(
-                    listOfCountryNamesByCode.getTCountryCodeAndName().stream()
-                            .findAny().orElseThrow().getSISOCode()
-                )
+        final String countryFlag = port.countryFlag(
+                listOfCountryNamesByCode.getTCountryCodeAndName().stream()
+                        .findAny().orElseThrow().getSISOCode()
+        );
+        System.out.println("countryFlag = " + countryFlag);
+
+
+        System.out.println("==10==");
+
+        final TCurrency tCurrency = port.countryCurrency(
+                listOfCurrenciesByCode.getTCurrency().stream()
+                        .findAny().orElseThrow().getSISOCode()
+        );
+        System.out.println("tCurrency = " + tCurrency);
+
+        System.out.println("==11==");
+
+        final String countryISOCode = port.countryISOCode(
+                arrayOftCountryInfo.getTCountryInfo().stream()
+                        .findAny().orElseThrow().getSName()
         );
 
+        System.out.println("countryISOCode = " + countryISOCode);
+
+        System.out.println("==12==");
+
+        final String countryIntPhoneCode = port.countryIntPhoneCode(countryISOCode);
+        System.out.println("countryIntPhoneCode = " + countryIntPhoneCode);
+
+        System.out.println("==13==");
 
     }
 }
