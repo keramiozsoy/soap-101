@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.net.URI;
 import java.net.URL;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -206,6 +205,50 @@ public class WSCallRunner implements CommandLineRunner {
         System.out.println("countryIntPhoneCode = " + countryIntPhoneCode);
 
         System.out.println("==13==");
+
+
+        final String countryName = port.countryName(countryISOCode);
+
+        System.out.println("countryName = " + countryName);
+
+        System.out.println("==14==");
+
+        final String currencyName = port.currencyName(countryISOCode);
+
+        System.out.println("currencyName = " + currencyName);
+
+        System.out.println("==15==");
+
+        final String languageISOCode = port.languageISOCode(
+                listOfLanguagesByCode.getTLanguage().stream()
+                        .map(TLanguage::getSName)
+                        .collect(Collectors.toUnmodifiableList()).stream().findAny().orElseThrow()
+
+        );
+
+        System.out.println("languageISOCode = " + languageISOCode);
+
+        System.out.println("==16==");
+
+        final String capitalCity = port.capitalCity(languageISOCode);
+
+        System.out.println("capitalCity = " + capitalCity);
+
+        System.out.println("==17==");
+
+
+        final String languageName = port.languageName(languageISOCode);
+
+        System.out.println("languageName = " + languageName);
+
+        System.out.println("==18==");
+
+        final ArrayOftCountryCodeAndName arrayOftCountryCodeAndName = port.countriesUsingCurrency(tCurrency.getSISOCode());
+
+        arrayOftCountryCodeAndName.getTCountryCodeAndName().stream()
+                .map(TCountryCodeAndName::getSName)
+                .collect(Collectors.toUnmodifiableList())
+                .forEach(System.out::println);
 
     }
 }
