@@ -3,7 +3,7 @@
 
 # Project
 
-I used to country wsdl
+I used wsdl of CountryInfoService
 
 - http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
 
