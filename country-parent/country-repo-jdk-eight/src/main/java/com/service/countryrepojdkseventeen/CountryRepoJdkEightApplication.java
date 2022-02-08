@@ -1,4 +1,4 @@
-package com.service.countryrepojdkeight;
+package com.service.countryrepojdkseventeen;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

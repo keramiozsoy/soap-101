@@ -1,4 +1,4 @@
-package com.service.countryrepojdkeight.runners;
+package com.service.countryrepojdkseventeen.runners;
 
 import org.oorsprong.websamples.*;
 import org.oorsprong.websamples_countryinfo.CountryInfoService;

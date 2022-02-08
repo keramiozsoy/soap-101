@@ -5,7 +5,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>country-repo-jdk-eleven</module>
-<!--		<module>country-repo-jdk-eight</module>-->
+		<module>country-repo-jdk-eight</module>
 		<module>country</module>
 	</modules>
 	<parent>
@@ -20,7 +20,8 @@
 	<name>country-parent</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -40,6 +41,30 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-toolchains-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>toolchain</goal>
+						</goals>
+						<configuration>
+							<toolchains>
+								<jdk>
+									<version>1.8</version>
+								</jdk>
+							</toolchains>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

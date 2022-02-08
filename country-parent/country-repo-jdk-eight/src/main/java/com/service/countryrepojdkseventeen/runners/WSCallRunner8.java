@@ -1,4 +1,4 @@
-package com.service.countryrepojdkeight.runners;
+package com.service.countryrepojdkseventeen.runners;
 
 import org.oorsprong.websamples.*;
 import org.springframework.boot.CommandLineRunner;
@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 public class WSCallRunner8 implements CommandLineRunner {
         @Override
         public void run(String... args) throws Exception {
+
             final String endpoint = "http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso";
 
             final URL url = URI.create(endpoint).toURL();
@@ -251,4 +252,6 @@ public class WSCallRunner8 implements CommandLineRunner {
                     .forEach(System.out::println);
 
         }
+
+
 }
