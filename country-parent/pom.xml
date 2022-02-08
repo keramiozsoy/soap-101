@@ -7,6 +7,8 @@
 		<module>country-repo-jdk-eleven</module>
 		<module>country-repo-jdk-eight</module>
 		<module>country</module>
+        <module>doc</module>
+		<module>country-repo-jdk-seventeen</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -19,10 +21,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>country-parent</name>
 	<description>Demo project for Spring Boot</description>
-	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -43,14 +41,20 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
+			<!-- Toolchain plugins begin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-toolchains-plugin</artifactId>
+				<version>3.0.0</version>
 				<executions>
 					<execution>
 						<goals>
@@ -66,6 +70,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- Toolchain plugins end -->
 		</plugins>
 	</build>
 
