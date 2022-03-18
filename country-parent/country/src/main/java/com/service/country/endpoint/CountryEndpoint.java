@@ -4,12 +4,14 @@ import com.jcraft.jsch.JSchException;
 import com.service.country.facade.CountryFacade;
 import com.service.country.ws.generated.*;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Endpoint
@@ -31,11 +33,22 @@ public class CountryEndpoint {
         return response;
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "ContinentsRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "continentsRequest")
     @ResponsePayload
-    public ContinentsResponse getAllContinents(ContinentsRequest request){
-        countryFacade.getAllContinents();
-        return null;
+    public ContinentsResponse getAllContinents(@RequestPayload ContinentsRequest request) {
+        final List<String> allContinents = countryFacade.getAllContinents();
+        ContinentsResponse continentsResponse = new ContinentsResponse();
+
+        if(CollectionUtils.isNotEmpty(allContinents)){
+            final Optional<String> any = allContinents.stream().findAny();
+            any.ifPresent(s -> {
+                ContinentListComplexType type = new ContinentListComplexType();
+                type.setName(s);
+                continentsResponse.setContinentList(type);
+            });
+        }
+
+        return continentsResponse;
     }
 
 }
