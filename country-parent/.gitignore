@@ -31,3 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/country/src/main/resources/xsd/
