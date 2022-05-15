@@ -38,6 +38,8 @@ I have generated classes with wsdl2java goal of cxf-codegen-plugin in JDK 17
 
 Just service
 
+http://localhost:8080/ws/countries.wsdl
+
 # Toolchain
 
 ~~~
