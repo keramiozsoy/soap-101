@@ -28,6 +28,13 @@
             <artifactId>wsdl4j</artifactId>
         </dependency>
         <!-- Produces SOAP WS end-->
+        <!-- Produces SOAP WS XSD begin -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <!-- Produces SOAP WS XSD end -->
         <!-- ftp -->
         <dependency>
             <groupId>com.jcraft</groupId>
@@ -95,17 +102,37 @@
                 <version>2.5.0</version>
                 <executions>
                     <execution>
-                        <id>xjc-country</id>
+                        <id>schemagen-country</id>
                         <goals>
-                            <goal>xjc</goal>
+                            <goal>schemagen</goal> <!-- Generate xsd from classes-->
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${basedir}/src/main/resources/countries.xsd</source>
+                                <source>${basedir}/src/main/java/com/service/country/endpoint/payload</source>
                             </sources>
-                            <packageName>com.service.country.ws.generated</packageName>
+                            <transformSchemas>
+                                <transformSchema>
+                                    <uri>https://github.com/keramiozsoy/soap-101</uri>
+                                    <toFile>country.xsd</toFile>
+                                </transformSchema>
+                            </transformSchemas>
+                            <outputDirectory>${basedir}/src/main/resources/xsd</outputDirectory>
                         </configuration>
                     </execution>
+
+<!--                    If you need to generate classes from xsd open and use  -->
+<!--                    <execution>-->
+<!--                        <id>xjc-country</id>-->
+<!--                        <goals>-->
+<!--                            <goal>xjc</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <sources>-->
+<!--                                <source>${basedir}/src/main/resources/xsd/country.xsd</source>-->
+<!--                            </sources>-->
+<!--                            <packageName>com.service.country.ws.generated</packageName>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
                 </executions>
             </plugin>
         </plugins>

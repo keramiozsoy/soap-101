@@ -1,8 +1,12 @@
 package com.service.country.endpoint;
 
 import com.jcraft.jsch.JSchException;
+import com.service.country.endpoint.payload.ContinentsRequest;
+import com.service.country.endpoint.payload.ContinentsResponse;
+import com.service.country.endpoint.payload.GetCountryRequest;
+import com.service.country.endpoint.payload.GetCountryResponse;
 import com.service.country.facade.CountryFacade;
-import com.service.country.ws.generated.*;
+//import com.service.country.ws.generated.*;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -25,9 +29,9 @@ public class CountryEndpoint {
     @ResponsePayload
     public GetCountryResponse getCountry(@RequestPayload GetCountryRequest request) throws JSchException {
         GetCountryResponse response = new GetCountryResponse();
-        final Country country = new Country();
-        country.setName("test");
-        response.setCountry(country);
+//        final Country country = new Country();
+//        country.setName("test");
+//        response.setCountry(country);
         countryFacade.generateXml();
         countryFacade.sendXml();
         return response;
@@ -42,9 +46,9 @@ public class CountryEndpoint {
         if(CollectionUtils.isNotEmpty(allContinents)){
             final Optional<String> any = allContinents.stream().findAny();
             any.ifPresent(s -> {
-                ContinentListComplexType type = new ContinentListComplexType();
-                type.setName(s);
-                continentsResponse.setContinentList(type);
+//                ContinentListComplexType type = new ContinentListComplexType();
+//                type.setName(s);
+//                continentsResponse.setContinentList(type);
             });
         }
 
